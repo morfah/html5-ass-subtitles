@@ -5,8 +5,8 @@ var GLOBAL_SPACING=30; // needed for controls
 
 function fetchASSFile(url) {
 	freq.open('get',url, true);
-	freq.send();
 	freq.onreadystatechange = finishDownloadingASS;
+	freq.send();
 }
 
 function finishDownloadingASS() {
@@ -65,7 +65,7 @@ function parseASS(ASScontent) {
 			// TODO: trim() the strings
 			if (assfile[linecount].startsWith('Style:')){
 				// Remove "Style:" at the beginning
-				var styleparts = assfile[linecount].split(':').shift().join(":").split(',');
+				var styleparts = assfile[linecount].split(':')[1].split(',');
 				// First String == Stylename
 				var stylename = styleparts[0].trim();
 				// Fetch highest array index to append new style
